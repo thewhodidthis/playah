@@ -3,22 +3,20 @@
 // # Playah
 // Helps control video elements
 
-var createPlayer = function (video, delay) {
-  if ( delay === void 0 ) delay = 30;
-
+const createPlayer = (video, delay = 30) => {
   if (!video || !video.src || !video.nodeName || video.nodeName !== 'VIDEO') {
     throw TypeError('Missing valid source')
   }
 
   // Needs fixing?
-  var veto = delay && /iPad|iPhone|iPod/.test(navigator.platform);
+  let veto = delay && /iPad|iPhone|iPod/.test(navigator.platform);
 
   // Paused?
-  var idle = true;
+  let idle = true;
 
-  var tick = function (since) {
-    var stamp = Date.now();
-    var delta = stamp - (since || stamp);
+  const tick = (since) => {
+    const stamp = Date.now();
+    const delta = stamp - (since || stamp);
 
     // In ms
     video.currentTime += delta * 0.001;
@@ -27,7 +25,7 @@ var createPlayer = function (video, delay) {
     veto = setTimeout(tick, delay, stamp);
   };
 
-  var kick = function () {
+  const kick = () => {
     if (idle) {
       tick();
     }
@@ -37,7 +35,7 @@ var createPlayer = function (video, delay) {
     return idle
   };
 
-  var drop = function () {
+  const drop = () => {
     if (veto) {
       clearTimeout(veto);
     }
@@ -47,19 +45,19 @@ var createPlayer = function (video, delay) {
     return idle
   };
 
-  var stop = veto ? drop : function () {
+  const stop = veto ? drop : () => {
     video.pause();
 
     return video.paused
   };
 
-  var play = veto ? kick : function () {
-    var playsMaybe = video.play();
+  const play = veto ? kick : () => {
+    const playsMaybe = video.play();
 
     // Some browsers don't support the promise based version yet
     if (playsMaybe) {
       // Fail silently, because the `paused` attribute remains unchanged regardless
-      playsMaybe.catch(function () {});
+      playsMaybe.catch(() => {});
     }
 
     return video.paused
@@ -78,7 +76,7 @@ var createPlayer = function (video, delay) {
   });
 
   // Done playing
-  video.addEventListener('ended', function () {
+  video.addEventListener('ended', () => {
     video.currentTime = 0;
 
     if (veto) {
@@ -102,8 +100,7 @@ var createPlayer = function (video, delay) {
     video.load();
   }
 
-  return { play: play, stop: stop, start: play, pause: stop }
+  return { play, stop, start: play, pause: stop }
 };
 
 module.exports = createPlayer;
-
