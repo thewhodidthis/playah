@@ -9,10 +9,8 @@ html {
 }
 
 body {
-  box-sizing: border-box;
   margin: 0;
   overflow: hidden;
-  padding: 0.5rem;
 }
 
 a {
@@ -52,6 +50,7 @@ img {
 
 canvas {
   background: #000 url('screenshot.png') no-repeat;
+  background-size: cover;
 }
 
 .button {
@@ -109,11 +108,40 @@ canvas {
   width: 1em;
 }
 
-.is-iframe {
-  font-size: 0.8125rem;
-  overflow: hidden;
+.is-iframe figure {
+  left: 0;
+  margin: 0;
+  top: 0;
 }
 
 .is-iframe figcaption {
   display: none;
+}
+
+.is-iframe canvas {
+  max-width: 100%;
+}
+
+@media all and (max-width: 600px) {
+  .is-iframe {
+    font-size: 14px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .is-iframe {
+    font-size: 12px;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .is-iframe {
+    font-size: 11px;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .is-iframe {
+    font-size: 9px;
+  }
 }
