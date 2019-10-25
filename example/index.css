@@ -6,11 +6,14 @@
 
 html {
   font: 16px/1.25 arial, sans-serif;
+  height: 100%;
 }
 
 body {
+  display: flex;
+  flex-direction: column;
   margin: 0;
-  overflow: hidden;
+  min-height: 100%;
 }
 
 a {
@@ -32,15 +35,13 @@ p {
 }
 
 figure {
-  left: 50%;
-  margin: -180px 0 0 -320px;
-  position: absolute;
-  text-align: center;
-  top: 50%;
+  margin: auto;
+  padding: 1.5rem 0 1rem;
 }
 
 figcaption {
   margin: 0.5rem 0 0;
+  text-align: center;
 }
 
 canvas,
@@ -49,8 +50,7 @@ img {
 }
 
 canvas {
-  background: #000 url('screenshot.png') no-repeat;
-  background-size: cover;
+  background: black url('screenshot.jpg') center/cover no-repeat;
 }
 
 .button {
@@ -109,17 +109,19 @@ canvas {
 }
 
 .is-iframe figure {
-  left: 0;
   margin: 0;
-  top: 0;
+  padding: 0;
 }
 
 .is-iframe figcaption {
   display: none;
 }
 
-.is-iframe canvas {
+.is-iframe canvas,
+.is-iframe img {
+  height: auto;
   max-width: 100%;
+  width: 100%;
 }
 
 @media all and (max-width: 600px) {
