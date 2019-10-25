@@ -7,7 +7,9 @@ const { ok, notOk, equal } = assert
 try {
   createPlayer()
 } catch (e) {
-  ok(e, e.message, 'will throw sans video input')
+  ok
+    .describe('will throw sans video input')
+    .test(e, e.message)
 }
 
 const source = document.createElement('video')
@@ -16,10 +18,20 @@ source.src = ''
 
 const { play, stop } = createPlayer(source)
 
-equal(typeof play, 'function', 'play', 'will operate')
-notOk(play(), 'playing')
+equal
+  .describe('play')
+  .test(typeof play, 'function')
 
-equal(typeof stop, 'function', 'stop')
-ok(stop(), 'paused')
+notOk
+  .describe('playing')
+  .test(play())
+
+equal
+  .describe('stop')
+  .test(typeof stop, 'function')
+
+ok
+  .describe('paused', 'will operate')
+  .test(stop())
 
 report()
