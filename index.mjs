@@ -63,12 +63,8 @@ const createPlayer = (video, delay = 30) => {
 
   // Check availability
   video.addEventListener('loadstart', function xloadstart() {
-    try {
-      video.currentTime = 0
-    } catch (e) {
-      // No currentTime hack available, that means iOS <8 I believe
-      throw e
-    }
+    // Throws if no currentTime hack available
+    video.currentTime = 0
 
     video.removeEventListener('loadstart', xloadstart)
   })
