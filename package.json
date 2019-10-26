@@ -1,6 +1,6 @@
 {
   "name": "playah",
-  "version": "2.0.11",
+  "version": "2.0.12",
   "description": "Helps control video elements",
   "main": "index",
   "module": "index.mjs",
