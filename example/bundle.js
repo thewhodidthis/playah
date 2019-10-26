@@ -100,10 +100,6 @@
     return { play, stop, start: play, pause: stop }
   };
 
-  if (window !== window.top) {
-    document.documentElement.classList.add('is-iframe');
-  }
-
   const source = document.createElement('video');
 
   // Fallback video from
