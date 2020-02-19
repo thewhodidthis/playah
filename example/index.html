@@ -1,19 +1,22 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="Helps setup inline videos">
-    <title>playah</title>
-    <link rel="icon" href="https://example.thewhodidthis.com/favicon.ico">
+    <title>playah.js</title>
+    <link rel="icon" href="//example.thewhodidthis.com/favicon.ico">
     <link rel="preload" href="index.css" as="style">
     <link rel="stylesheet" href="index.css">
     <script src="bundle.js" defer></script>
+    <noscript>
+      <style>canvas { background-image: url(screenshot.jpg) }</style>
+    </noscript>
   </head>
   <body>
     <figure>
       <a href="#canvas" class="button">
         <canvas id="canvas" height="360" width="640">
-          <img src="screenshot.jpg" alt="Screenshot" height="360" width="640">
+          <img src="screenshot.jpg" alt="Screenshot: Fallback video of Czechoslovak troops marching found on Pond5" height="360" width="640">
         </canvas>
       </a>
       <figcaption>

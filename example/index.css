@@ -33,7 +33,6 @@ p {
 figure {
   margin: auto;
   max-width: 640px;
-  padding: 1.5rem 0 1rem;
 }
 
 figcaption {
@@ -46,7 +45,7 @@ img {
 }
 
 canvas {
-  background: black url('screenshot.jpg') center/contain no-repeat;
+  background: black center/contain no-repeat;
   display: block;
 }
 
