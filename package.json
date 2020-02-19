@@ -14,7 +14,7 @@
   },
   "scripts": {
     "pretest": "eslint test.js",
-    "test": "rollup -c -f iife test.js | kpow",
+    "test": "rollup -c node:x -f iife test.js | kpow",
     "prestart": "eslint index.mjs",
     "start": "rollup -f cjs index.mjs > index.js",
     "preexample": "eslint example/index.js",
@@ -28,13 +28,13 @@
     "npm": ">=3.10.10"
   },
   "devDependencies": {
-    "@rollup/plugin-node-resolve": "^7.1.1",
-    "@thewhodidthis/eslint-config": "^0.0.11",
+    "@thewhodidthis/eslint-config": "^0.0.16",
     "cutaway": "^0.0.7",
     "eslint": "^6.8.0",
     "kpow": "^0.1.4",
     "rollup": "^1.31.1",
-    "tapeless": "^0.0.7"
+    "rollup-config-x": "^1.0.4",
+    "tapeless": "^0.0.9"
   },
   "keywords": [
     "video",
