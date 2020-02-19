@@ -1,5 +1,5 @@
 import 'cutaway'
-import { report, assert } from 'tapeless/browser'
+import { report, assert } from 'tapeless'
 import createPlayer from './index.mjs'
 
 const { ok, notOk, equal } = assert
