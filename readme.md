@@ -25,13 +25,13 @@ const { play, stop } = createPlayer(video)
 let paused = 1
 
 video.addEventListener('loadstart', () => {
-    paused = 0
+  paused = 0
 })
 
 video.addEventListener('click', (e) => {
-    e.preventDefault()
+  e.preventDefault()
     
-    paused = paused ? play() : stop()
+  paused = paused ? play() : stop()
 }, false)
 
 document.body.appendChild(video)
