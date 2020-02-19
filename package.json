@@ -2,30 +2,32 @@
   "name": "playah",
   "version": "2.0.13",
   "description": "Helps control video elements",
-  "main": "index",
-  "module": "index.mjs",
+  "keywords": [
+    "video",
+    "canvas"
+  ],
   "homepage": "https://github.com/thewhodidthis/playah#readme",
+  "bugs": {
+    "url": "https://github.com/thewhodidthis/playah/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/thewhodidthis/playah.git"
   },
-  "bugs": {
-    "url": "https://github.com/thewhodidthis/playah/issues"
-  },
+  "license": "MIT",
+  "author": "sChzs BkgNns <sotirios.bakagiannis@gmail.com> (https://www.thewhodidthis.com)",
+  "main": "index",
+  "module": "index.mjs",
   "scripts": {
-    "pretest": "eslint test.js",
-    "test": "rollup -c node:x -f iife test.js | kpow",
+    "preexample": "eslint example/index.js",
+    "example": "cd example; rollup -f iife index.js > bundle.js",
     "prestart": "eslint index.mjs",
     "start": "rollup -f cjs index.mjs > index.js",
-    "preexample": "eslint example/index.js",
-    "example": "cd example; rollup -f iife index.js > bundle.js"
+    "pretest": "eslint test.js",
+    "test": "rollup -c node:x -f iife test.js | kpow"
   },
   "eslintConfig": {
     "extends": "@thewhodidthis"
-  },
-  "engines": {
-    "node": ">=6.11.0",
-    "npm": ">=3.10.10"
   },
   "devDependencies": {
     "@thewhodidthis/eslint-config": "^0.0.16",
@@ -36,10 +38,8 @@
     "rollup-config-x": "^1.0.4",
     "tapeless": "^0.0.9"
   },
-  "keywords": [
-    "video",
-    "canvas"
-  ],
-  "author": "sChzs BkgNns <sotirios.bakagiannis@gmail.com> (https://www.thewhodidthis.com)",
-  "license": "MIT"
+  "engines": {
+    "node": ">=6.11.0",
+    "npm": ">=3.10.10"
+  }
 }
