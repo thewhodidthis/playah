@@ -15,28 +15,32 @@
     "url": "git+https://github.com/thewhodidthis/playah.git"
   },
   "license": "MIT",
-  "author": "sChzs BkgNns <sotirios.bakagiannis@gmail.com> (https://www.thewhodidthis.com)",
+  "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
   "main": "index",
   "module": "index.mjs",
+  "directories": {
+    "example": "example"
+  },
   "scripts": {
     "preexample": "eslint example/index.js",
-    "example": "cd example; rollup -f iife index.js > bundle.js",
+    "example": "cd example; rollup -f iife -o bundle.js index.js",
     "prestart": "eslint index.mjs",
-    "start": "rollup -f cjs index.mjs > index.js",
+    "start": "rollup -f cjs -o index.js index.mjs",
     "pretest": "eslint test.js",
     "test": "rollup -c node:x -f iife test.js | kpow"
   },
   "eslintConfig": {
     "extends": "@thewhodidthis"
   },
+  "dependencies": {},
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "^0.0.16",
-    "cutaway": "^0.0.7",
+    "@thewhodidthis/eslint-config": "^0.0.17",
+    "cutaway": "^0.0.8",
     "eslint": "^6.8.0",
     "kpow": "^0.1.4",
     "rollup": "^1.31.1",
-    "rollup-config-x": "^1.0.4",
-    "tapeless": "^0.0.9"
+    "rollup-config-x": "^1.0.5",
+    "tapeless": "^0.0.10"
   },
   "engines": {
     "node": ">=6.11.0",
