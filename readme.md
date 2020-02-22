@@ -30,7 +30,7 @@ video.addEventListener('loadstart', () => {
 
 video.addEventListener('click', (e) => {
   e.preventDefault()
-    
+
   paused = paused ? play() : stop()
 }, false)
 
