@@ -1,12 +1,19 @@
-> Helps control video elements with autoplay available down to iOS 8
+## about
 
-### Setup
+Helps control video elements with autoplay available down to iOS 8.
+
+## setup
+
+Fetch latest from the _npm_ registry:
+
 ```sh
-# Fetch latest from github
-npm i thewhodidthis/playah
+npm install @thewhodidthis/playah
 ```
 
-### Usage
+## usage
+
+Feed with a `<video>` element as for example,
+
 ```js
 import createPlayer from 'playah'
 
