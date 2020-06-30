@@ -34,13 +34,13 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "^0.0.17",
-    "cutaway": "^0.0.8",
-    "eslint": "^6.8.0",
-    "kpow": "^0.1.4",
-    "rollup": "^1.31.1",
-    "rollup-config-x": "^1.0.5",
-    "tapeless": "^0.0.10"
+    "@thewhodidthis/eslint-config": "^0.1.7",
+    "cutaway": "^0.0.11",
+    "eslint": "^7.3.1",
+    "kpow": "^0.1.8",
+    "rollup": "^2.18.1",
+    "rollup-config-x": "^3.0.0",
+    "tapeless": "^1.0.3"
   },
   "engines": {
     "node": ">=6.11.0",
