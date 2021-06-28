@@ -16,15 +16,15 @@ npm install playah
 Feed with a `<video>` element as for example,
 
 ```js
-import createPlayer from 'playah'
+import createPlayer from "playah"
 
-const video = document.createElement('video')
+const video = document.createElement("video")
 
-'playsinline loop autoplay'.split(' ').forEach((v) => {
-  video.setAttribute(v, '')
+"playsinline loop autoplay".split(" ").forEach((v) => {
+  video.setAttribute(v, "")
 })
 
-video.setAttribute('src', 'BigBuckBunny.mp4')
+video.setAttribute("src", "BigBuckBunny.mp4")
 
 // Instantiating past video setup is
 // kind of important in this example
@@ -32,11 +32,11 @@ const { play, stop } = createPlayer(video)
 
 let paused = 1
 
-video.addEventListener('loadstart', () => {
+video.addEventListener("loadstart", () => {
   paused = 0
 })
 
-video.addEventListener('click', (e) => {
+video.addEventListener("click", (e) => {
   e.preventDefault()
 
   paused = paused ? play() : stop()
