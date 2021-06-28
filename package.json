@@ -16,34 +16,24 @@
   },
   "license": "MIT",
   "author": "Sotiri Bakagiannis <sotirios.bakagiannis@gmail.com> (http://thewhodidthis.com)",
-  "main": "index",
-  "module": "index.mjs",
+  "type": "module",
+  "exports": "./main.js",
+  "main": "./main.js",
   "directories": {
     "example": "example"
   },
   "scripts": {
-    "preexample": "eslint example/index.js",
-    "example": "cd example; rollup -f iife -o bundle.js index.js",
-    "prestart": "eslint index.mjs",
-    "start": "rollup -f cjs -o index.js index.mjs",
-    "pretest": "eslint test.js",
-    "test": "rollup -c node:x -f iife test.js | kpow"
+    "start": "cd example; esbuild --bundle --outfile=bundle.js index.js",
+    "test": "esbuild --bundle test.js | kpow"
   },
-  "eslintConfig": {
-    "extends": "@thewhodidthis"
-  },
-  "dependencies": {},
   "devDependencies": {
-    "@thewhodidthis/eslint-config": "^0.1.7",
-    "cutaway": "^0.0.11",
-    "eslint": "^7.3.1",
-    "kpow": "^0.1.8",
-    "rollup": "^2.18.1",
-    "rollup-config-x": "^3.0.0",
-    "tapeless": "^1.0.3"
+    "cutaway": "^1.0.9",
+    "esbuild": "^0.12.11",
+    "kpow": "^3.0.1",
+    "tapeless": "^2.0.1"
   },
   "engines": {
-    "node": ">=6.11.0",
-    "npm": ">=3.10.10"
+    "node": ">=14.17.0",
+    "npm": ">=6.14.13"
   }
 }
