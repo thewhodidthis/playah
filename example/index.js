@@ -1,4 +1,4 @@
-import createPlayer from '../index.mjs'
+import createPlayer from '../main.js'
 
 const source = document.createElement('video')
 

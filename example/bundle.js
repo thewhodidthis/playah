@@ -1,154 +1,101 @@
-(function () {
-  'use strict';
-
-  // # Playah
-  // Helps control video elements
-
-  const createPlayer = (video, delay = 30) => {
-    if (!video || !video.src || !video.nodeName || video.nodeName !== 'VIDEO') {
-      throw TypeError('Missing valid source')
+(() => {
+  // ../main.js
+  var createPlayer = (video, delay = 30) => {
+    if (!video || !video.src || !video.nodeName || video.nodeName !== "VIDEO") {
+      throw TypeError("Missing valid source");
     }
-
-    // Needs fixing?
     let veto = delay && /iPad|iPhone|iPod/.test(navigator.platform);
-
-    // Paused?
     let idle = true;
-
     const tick = (since) => {
       const stamp = Date.now();
       const delta = stamp - (since || stamp);
-
-      // In ms
-      video.currentTime += delta * 0.001;
-
-      // Repeat, repurpose veto flag
+      video.currentTime += delta * 1e-3;
       veto = setTimeout(tick, delay, stamp);
     };
-
     const kick = () => {
       if (idle) {
         tick();
       }
-
       idle = false;
-
-      return idle
+      return idle;
     };
-
     const drop = () => {
       if (veto) {
         clearTimeout(veto);
       }
-
       idle = true;
-
-      return idle
+      return idle;
     };
-
     const stop = veto ? drop : () => {
       video.pause();
-
-      return video.paused
+      return video.paused;
     };
-
     const play = veto ? kick : () => {
       const playsMaybe = video.play();
-
-      // Some browsers don't support the promise based version yet
       if (playsMaybe) {
-        // Fail silently, because the `paused` attribute remains unchanged regardless
-        playsMaybe.catch(() => {});
+        playsMaybe.catch(() => {
+        });
       }
-
-      return video.paused
+      return video.paused;
     };
-
-    // Check availability
-    video.addEventListener('loadstart', function xloadstart() {
-      // Throws if no currentTime hack available
+    video.addEventListener("loadstart", function xloadstart() {
       video.currentTime = 0;
-
-      video.removeEventListener('loadstart', xloadstart);
+      video.removeEventListener("loadstart", xloadstart);
     });
-
-    // Done playing
-    video.addEventListener('ended', () => {
+    video.addEventListener("ended", () => {
       video.currentTime = 0;
-
       if (veto) {
         stop();
       }
-
       if (video.loop) {
         play();
       }
     });
-
     if (veto) {
       if (video.autoplay) {
         play();
       }
-
-      // Drop before anyone gets hurt
-      video.removeAttribute('autoplay');
-
-      // Must have
+      video.removeAttribute("autoplay");
       video.load();
     }
-
-    return { play, stop, start: play, pause: stop }
+    return { play, stop, start: play, pause: stop };
   };
+  var main_default = createPlayer;
 
-  const source = document.createElement('video');
-
-  // Fallback video from
-  // https://www.pond5.com/stock-footage/43338828/czechoslovak-troops-marching-parade.html
-  source.setAttribute('src', 'clip.mp4');
-
-  const player = createPlayer(source);
-
-  const figure = document.querySelector('figure');
-  const target = document.querySelector('canvas').getContext('2d');
-
-  const createLoop = (loop) => {
+  // index.js
+  var source = document.createElement("video");
+  source.setAttribute("src", "clip.mp4");
+  var player = main_default(source);
+  var figure = document.querySelector("figure");
+  var target = document.querySelector("canvas").getContext("2d");
+  var createLoop = (loop) => {
     let id = false;
-
     const start = () => {
       loop();
-
       id = window.requestAnimationFrame(start);
     };
-
     const pause = () => {
       id = id && window.cancelAnimationFrame(id);
     };
-
-    return { start, pause }
+    return { start, pause };
   };
-
-  const looper = createLoop(() => {
+  var looper = createLoop(() => {
     target.drawImage(source, 0, 0);
   });
-
-  source.addEventListener('ended', () => {
-    figure.classList.remove('is-active');
+  source.addEventListener("ended", () => {
+    figure.classList.remove("is-active");
     looper.pause();
   });
-
-  document.querySelector('a').addEventListener('click', (e) => {
+  document.querySelector("a").addEventListener("click", (e) => {
     e.stopPropagation();
     e.preventDefault();
-
-    if (figure.classList.contains('is-active')) {
+    if (figure.classList.contains("is-active")) {
       player.pause();
       looper.pause();
     } else {
       player.start();
       looper.start();
     }
-
-    figure.classList.toggle('is-active');
+    figure.classList.toggle("is-active");
   }, false);
-
-}());
+})();
