@@ -1,6 +1,6 @@
-import 'cutaway'
-import { report, assert } from 'tapeless'
-import createPlayer from './main.js'
+import "cutaway"
+import { assert, report } from "tapeless"
+import createPlayer from "./main.js"
 
 const { ok, notOk, equal } = assert
 
@@ -8,30 +8,30 @@ try {
   createPlayer()
 } catch (e) {
   ok
-    .describe('will throw sans video input')
+    .describe("will throw sans video input")
     .test(e, e.message)
 }
 
-const source = document.createElement('video')
+const source = document.createElement("video")
 
-source.src = ''
+source.src = ""
 
 const { play, stop } = createPlayer(source)
 
 equal
-  .describe('play')
-  .test(typeof play, 'function')
+  .describe("play")
+  .test(typeof play, "function")
 
 notOk
-  .describe('playing')
+  .describe("playing")
   .test(play())
 
 equal
-  .describe('stop')
-  .test(typeof stop, 'function')
+  .describe("stop")
+  .test(typeof stop, "function")
 
 ok
-  .describe('paused', 'will operate')
+  .describe("paused", "will operate")
   .test(stop())
 
 report()

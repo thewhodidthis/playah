@@ -2,8 +2,8 @@
 // Helps control video elements
 
 const createPlayer = (video, delay = 30) => {
-  if (!video || !video.src || !video.nodeName || video.nodeName !== 'VIDEO') {
-    throw TypeError('Missing valid source')
+  if (!video || !video.src || !video.nodeName || video.nodeName !== "VIDEO") {
+    throw TypeError("Missing valid source")
   }
 
   // Needs fixing?
@@ -62,15 +62,15 @@ const createPlayer = (video, delay = 30) => {
   }
 
   // Check availability
-  video.addEventListener('loadstart', function xloadstart() {
+  video.addEventListener("loadstart", function xloadstart() {
     // Throws if no currentTime hack available
     video.currentTime = 0
 
-    video.removeEventListener('loadstart', xloadstart)
+    video.removeEventListener("loadstart", xloadstart)
   })
 
   // Done playing
-  video.addEventListener('ended', () => {
+  video.addEventListener("ended", () => {
     video.currentTime = 0
 
     if (veto) {
@@ -88,7 +88,7 @@ const createPlayer = (video, delay = 30) => {
     }
 
     // Drop before anyone gets hurt
-    video.removeAttribute('autoplay')
+    video.removeAttribute("autoplay")
 
     // Must have
     video.load()

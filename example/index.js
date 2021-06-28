@@ -1,15 +1,15 @@
-import createPlayer from '../main.js'
+import createPlayer from "../main.js"
 
-const source = document.createElement('video')
+const source = document.createElement("video")
 
 // Fallback video from
 // https://www.pond5.com/stock-footage/43338828/czechoslovak-troops-marching-parade.html
-source.setAttribute('src', 'clip.mp4')
+source.setAttribute("src", "clip.mp4")
 
 const player = createPlayer(source)
 
-const figure = document.querySelector('figure')
-const target = document.querySelector('canvas').getContext('2d')
+const figure = document.querySelector("figure")
+const target = document.querySelector("canvas").getContext("2d")
 
 const createLoop = (loop) => {
   let id = false
@@ -31,16 +31,16 @@ const looper = createLoop(() => {
   target.drawImage(source, 0, 0)
 })
 
-source.addEventListener('ended', () => {
-  figure.classList.remove('is-active')
+source.addEventListener("ended", () => {
+  figure.classList.remove("is-active")
   looper.pause()
 })
 
-document.querySelector('a').addEventListener('click', (e) => {
+document.querySelector("a").addEventListener("click", (e) => {
   e.stopPropagation()
   e.preventDefault()
 
-  if (figure.classList.contains('is-active')) {
+  if (figure.classList.contains("is-active")) {
     player.pause()
     looper.pause()
   } else {
@@ -48,5 +48,5 @@ document.querySelector('a').addEventListener('click', (e) => {
     looper.start()
   }
 
-  figure.classList.toggle('is-active')
+  figure.classList.toggle("is-active")
 }, false)
