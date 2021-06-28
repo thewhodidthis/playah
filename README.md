@@ -4,10 +4,11 @@ Helps control video elements with autoplay available down to iOS 8.
 
 ## setup
 
-Fetch latest from the _npm_ registry:
+Download from the _npm_ registry:
 
 ```sh
-npm install @thewhodidthis/playah
+# Add to package.json
+npm install playah
 ```
 
 ## usage
