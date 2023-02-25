@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>playah.js</title>
+    <script type="module">
+      import "https://thewhodidthis.github.io/cutaway/main.js"
+      import { assert, report } from "https://thewhodidthis.github.io/tapeless/main.js"
+      import createPlayer from "./main.js"
+
+      const { ok, notOk, equal } = assert
+
+      try {
+        createPlayer()
+      } catch (e) {
+        ok
+          .describe("will throw sans video input")
+          .test(e, e.message)
+      }
+
+      const source = document.createElement("video")
+
+      source.src = ""
+
+      const { play, stop } = createPlayer(source)
+
+      equal
+        .describe("play")
+        .test(typeof play, "function")
+
+      notOk
+        .describe("playing")
+        .test(play())
+
+      equal
+        .describe("stop")
+        .test(typeof stop, "function")
+
+      ok
+        .describe("paused", "will operate")
+        .test(stop())
+
+      report()
+    </script>
+  </head>
+  <body></body>
+</html>
